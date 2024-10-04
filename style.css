@@ -65,6 +65,21 @@ header {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  &::before {
+    width: 100vw;
+    height: 100vh;
+    content: "";
+    background-image: url(img/bg-watch.svg);
+    background-position: start;
+    background-size: cover;
+    opacity: 0.1;
+    position: absolute;
+    z-index: -1;
+    /* top: 50%; */
+    /* left: 10%; */
+    /* transform: translate(-10%, -50%); */
+    transition: 1s;
+  }
 }
 .list {
   position: absolute;
@@ -288,132 +303,6 @@ header {
   pointer-events: none;
 }
 /* showDetail */
-.carousel.showDetail .list .item {
-  &::before {
-    width: 50%;
-    height: 100%;
-    content: "";
-    background-image: url(img/bg-peli-info.svg);
-    background-position: end;
-    background-size: cover;
-    opacity: 0.1;
-    position: absolute;
-    z-index: -1;
-    /* background-image: linear-gradient(70deg, #509, #000); */
-    /* background-color: red; */
-    /* border-radius: 20% 30% 80% 10%; */
-    /* filter: blur(150px); */
-    top: 50%;
-    right: 20%;
-    transform: translate(50%, -50%);
-    transition: 1s;
-  }
-  &:nth-child(3),
-  &:nth-child(4) {
-    left: 100%;
-    /* opacity: 0; */
-    pointer-events: none;
-  }
-  &:nth-child(2) {
-    width: 100%;
-
-    .introduce {
-      opacity: 0;
-      pointer-events: none;
-    }
-    & img {
-      right: 50%;
-    }
-    .detail {
-      opacity: 1;
-      width: 50%;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      text-align: right;
-      pointer-events: auto;
-      padding-right: 0.5rem;
-
-      .title,
-      .des,
-      .specifications,
-      .checkout {
-        opacity: 0;
-        animation: showContent 0.5s 1s ease-in-out 1 forwards;
-      }
-      .title {
-        font-size: 4em;
-      }
-      .des {
-        animation-delay: 1.2s;
-        &::-webkit-scrollbar {
-          width: 0.5rem;
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: #0005;
-          border: 0.5px solid #fff6;
-          border-radius: 8px;
-
-          &:active {
-            background-color: #333;
-            border: 0.5px solid #999;
-          }
-        }
-      }
-      .specifications {
-        display: flex;
-        gap: 10px;
-        width: 100%;
-        border-top: 1px solid #5553;
-        margin-top: 20px;
-        animation-delay: 1.4s;
-        &::-webkit-scrollbar {
-          height: 0.5rem;
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: #0005;
-          border: 0.5px solid #fff6;
-          border-radius: 8px;
-
-          &:active {
-            background-color: #333;
-            border: 0.5px solid #999;
-          }
-        }
-
-        & div {
-          width: 90px;
-          text-align: center;
-          flex-shrink: 0;
-
-          & p:nth-child(1) {
-            font-weight: bold;
-          }
-        }
-      }
-
-      .checkout {
-        animation-delay: 1.6s;
-
-        & button {
-          font-family: Poppins;
-          background-color: transparent;
-          border: 1px solid #509;
-          margin-left: 5px;
-          padding: 5px 10px;
-          letter-spacing: 2px;
-          font-weight: 500;
-          cursor: pointer;
-          &:nth-child(2) {
-            background-color: #509;
-            color: #eee;
-          }
-        }
-      }
-    }
-  }
-}
 
 .arrows {
   position: absolute;
@@ -459,38 +348,151 @@ header {
     letter-spacing: 3px;
     background-color: transparent;
     padding: 0.5rem 0 0.5rem 0.7rem;
-    cursor: pointer;
+    opacity: 0;
     transition: opacity 0.5s;
   }
 }
 
-.carousel.showDetail #back {
-  opacity: 1;
+.carousel.showDetail {
+  &::before {
+    transform: translate(-100%, -50%) rotate(90deg);
+    filter: blur(130px);
+  }
+
+  #back {
+    opacity: 1;
+  }
+  #prev,
+  #next {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .list .item {
+    &::before {
+      width: 50%;
+      height: 100%;
+      content: "";
+      background-image: url(img/bg-watch-info.svg);
+      background-position: end;
+      background-size: cover;
+      opacity: 0.1;
+      position: absolute;
+      z-index: -1;
+      /* background-image: linear-gradient(70deg, #509, #000); */
+      /* border-radius: 20% 30% 80% 10%; */
+      /* filter: blur(150px); */
+      top: 50%;
+      right: 20%;
+      transform: translate(50%, -50%);
+      transition: 1s;
+    }
+    &:nth-child(3),
+    &:nth-child(4) {
+      left: 100%;
+      /* opacity: 0; */
+      pointer-events: none;
+    }
+    &:nth-child(2) {
+      width: 100%;
+
+      .introduce {
+        opacity: 0;
+        pointer-events: none;
+      }
+      & img {
+        right: 50%;
+      }
+      .detail {
+        opacity: 1;
+        width: 50%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: right;
+        pointer-events: auto;
+        padding-right: 0.5rem;
+
+        .title,
+        .des,
+        .specifications,
+        .checkout {
+          opacity: 0;
+          animation: showContent 0.5s 1s ease-in-out 1 forwards;
+        }
+        .title {
+          font-size: 4em;
+        }
+        .des {
+          animation-delay: 1.2s;
+          &::-webkit-scrollbar {
+            width: 0.5rem;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: #0005;
+            border: 0.5px solid #fff6;
+            border-radius: 8px;
+
+            &:active {
+              background-color: #333;
+              border: 0.5px solid #999;
+            }
+          }
+        }
+        .specifications {
+          display: flex;
+          gap: 10px;
+          width: 100%;
+          border-top: 1px solid #5553;
+          margin-top: 20px;
+          animation-delay: 1.4s;
+          &::-webkit-scrollbar {
+            height: 0.5rem;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: #0005;
+            border: 0.5px solid #fff6;
+            border-radius: 8px;
+
+            &:active {
+              background-color: #333;
+              border: 0.5px solid #999;
+            }
+          }
+
+          & div {
+            width: 90px;
+            text-align: center;
+            flex-shrink: 0;
+
+            & p:nth-child(1) {
+              font-weight: bold;
+            }
+          }
+        }
+        .checkout {
+          animation-delay: 1.6s;
+
+          & button {
+            font-family: Poppins;
+            background-color: transparent;
+            border: 1px solid #509;
+            margin-left: 5px;
+            padding: 5px 10px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            cursor: pointer;
+            &:nth-child(2) {
+              background-color: #509;
+              color: #eee;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-.carousel.showDetail #prev,
-.carousel.showDetail #next {
-  opacity: 0;
-  pointer-events: none;
-}
-.carousel::before {
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  background-image: url(img/bg-peli.svg);
-  background-position: start;
-  background-size: cover;
-  opacity: 0.1;
-  position: absolute;
-  z-index: -1;
-  /* top: 50%; */
-  /* left: 10%; */
-  /* transform: translate(-10%, -50%); */
-  transition: 1s;
-}
-.carousel.showDetail::before {
-  transform: translate(-100%, -50%) rotate(90deg);
-  filter: blur(130px);
-}
+
 @media screen and (max-width: 991px) {
   /* ipad, tablets */
   .carousel .list .item {
@@ -504,13 +506,9 @@ header {
 }
 @media screen and (max-width: 767px) {
   /* mobile */
-  .carousel {
-  }
-
   .list {
     height: 100%;
     .item {
-      /* background-color: red; */
       width: 100%;
       font-size: 10px;
       &:nth-child(2) .introduce {

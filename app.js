@@ -6,28 +6,26 @@ const d = document,
   $seeMoreButtons = d.querySelectorAll(".seeMore"),
   $backButton = d.getElementById("back");
 
-$nextButton.onclick = () => {
-  showSlider("next");
-};
-$prevButton.onclick = () => {
-  showSlider("prev");
-};
+$nextButton.onclick = () => showSlider("next");
+$prevButton.onclick = () => showSlider("prev");
 
 let unAcceppClick;
 
 const showSlider = (type) => {
   $nextButton.style.pointerEvents = "none";
   $prevButton.style.pointerEvents = "none";
-
   $carousel.classList.remove("next", "prev");
-  let items = d.querySelectorAll(".carousel .list .item");
+
+  let $items = d.querySelectorAll(".carousel .list .item");
+
   if (type === "next") {
-    $listHTML.appendChild(items[0]);
+    $listHTML.appendChild($items[0]);
     $carousel.classList.add("next");
   } else {
-    $listHTML.prepend(items[items.length - 1]);
+    $listHTML.prepend($items[$items.length - 1]);
     $carousel.classList.add("prev");
   }
+
   clearTimeout(unAcceppClick);
   unAcceppClick = setTimeout(() => {
     $nextButton.style.pointerEvents = "auto";
@@ -39,6 +37,7 @@ $seeMoreButtons.forEach((button) => {
   button.onclick = () => {
     $carousel.classList.remove("next", "prev");
     $carousel.classList.add("showDetail");
+    $backButton.style.cursor = "pointer";
   };
 });
 
