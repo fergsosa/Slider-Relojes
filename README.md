@@ -40,6 +40,8 @@ Este slider combina transformaciones visuales y filtros CSS para lograr transici
 - Fortalecer conocimientos en diseño responsivo y animaciones
 - Crear una experiencia de usuario más rica y moderna en proyectos web
 
----
+## 🖥️ Capturas de pantalla
 
-¡Un proyecto ideal para practicar y demostrar habilidades en diseño visual avanzado usando tecnologías del lado del cliente! ✨🧠
+## ![Capturas de pantalla](./screenshot.png)
+
+¡Un proyecto ideal para practicar y demostrar habilidades en diseño visual avanzado usando tecnologías del lado del cliente!
